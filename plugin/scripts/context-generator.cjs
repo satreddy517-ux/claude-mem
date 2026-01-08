@@ -31,6 +31,7 @@ ${o.stack}`:` ${o.message}`:this.getLevel()===0&&typeof o=="object"?u=`
         CREATE INDEX IF NOT EXISTS idx_sdk_sessions_project ON sdk_sessions(project);
         CREATE INDEX IF NOT EXISTS idx_sdk_sessions_status ON sdk_sessions(status);
         CREATE INDEX IF NOT EXISTS idx_sdk_sessions_started ON sdk_sessions(started_at_epoch DESC);
+        CREATE INDEX IF NOT EXISTS idx_sdk_sessions_started ON sdk_sessions(content_session_id);
 
         CREATE TABLE IF NOT EXISTS observations (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,6 +48,7 @@ ${o.stack}`:` ${o.message}`:this.getLevel()===0&&typeof o=="object"?u=`
         CREATE INDEX IF NOT EXISTS idx_observations_project ON observations(project);
         CREATE INDEX IF NOT EXISTS idx_observations_type ON observations(type);
         CREATE INDEX IF NOT EXISTS idx_observations_created ON observations(created_at_epoch DESC);
+        CREATE INDEX IF NOT EXISTS idx_observations_created ON observations(session_id);
 
         CREATE TABLE IF NOT EXISTS session_summaries (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
